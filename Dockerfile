@@ -1,7 +1,7 @@
-ARG NGINX_VERSION=1.14.2
-ARG NGINX_HTTP_FLV_VERSION=1.2.5
+ARG NGINX_VERSION=1.21.6
+ARG NGINX_HTTP_FLV_VERSION=1.2.10
 
-FROM alpine:3.8 AS base
+FROM alpine:3.15.4 AS base
 
 # Add Alpine Linux Chinese mirror
 RUN echo "https://mirror.tuna.tsinghua.edu.cn/alpine/v3.8/main" > /etc/apk/repositories
@@ -28,7 +28,7 @@ RUN \
 
 
 FROM base AS release
-LABEL MAINTAINER YE Ying-xian <yeyingxian@163.com>
+LABEL MAINTAINER Davut Şahin <info@davutsahin.com.tr>
 COPY --from=build /usr/local/nginx /usr/local/nginx
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 
